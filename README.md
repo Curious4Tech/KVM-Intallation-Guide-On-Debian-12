@@ -1,9 +1,5 @@
 # KVM-Intallation-Guide-On-Debian-12
 
-Here’s a GitHub README file for installing and configuring KVM on Debian 12:
-
----
-
 # KVM Installation and Configuration on Debian 12
 
 This guide provides a detailed, step-by-step process to install and configure KVM (Kernel-based Virtual Machine) on Debian 12.
