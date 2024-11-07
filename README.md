@@ -138,7 +138,7 @@ This step allows your user to manage VMs without root privileges.
 Add your user to the libvirt and kvm groups:
 
 ```
-    sudo usermod -aG libvirt,kvm $USER
+sudo usermod -aG libvirt,kvm $USER
 ```
  Log out and log back in for the group changes to take effect.
 
@@ -151,41 +151,52 @@ Check if the default network is active:
 ```
 sudo virsh net-list --all
 ```
+
+![image](https://github.com/user-attachments/assets/564dd056-dbab-4b71-80ee-8741ba876928)
+
+
 If default shows as inactive, start it:
 
 ```
 sudo virsh net-start default
 ```
 
+![image](https://github.com/user-attachments/assets/9b48a71e-f3e7-40a3-9ef1-f03be95a26cc)
+
+
 Ensure it starts on boot:
 
 ```
- sudo virsh net-autostart default
+sudo virsh net-autostart default
 ```
 
-### Step 10: Launch Virt-Manager
-
-To create and manage VMs using a graphical interface, launch Virt-Manager:
-
-virt-manager
-
-    In Virt-Manager, you can create new virtual machines, configure resources, and install operating systems.
+![image](https://github.com/user-attachments/assets/c9d69400-f24b-49e0-b60b-c44f031ce243)
 
 
-### Step 8: Create a Virtual Machine
+### Step 10: Create a Virtual Machine Using command line terminal 
 
 #### Using Virt-Manager (GUI)
 
 1. **Launch Virt-Manager**:
-   ```bash
-   virt-manager
-   ```
+   To create and manage VMs using a graphical interface, launch Virt-Manager:
+
+```
+virt-manager
+```
+In Virt-Manager, you can create new virtual machines, configure resources, and install operating systems.
+
 2. **Create a New VM**:
    - Use the GUI to create a VM by following the setup prompts.
+
+
+
+![image](https://github.com/user-attachments/assets/2cea909b-3e1d-448e-8f66-dd5e822b15f6)
+
 
 #### Using Command Line (Optional)
 
 Use `virt-install` to create a VM:
+
 ```bash
 virt-install \
   --name=myvm \
@@ -196,11 +207,11 @@ virt-install \
   --os-variant debian11 \
   --network network=default \
   --graphics none \
-  --location 'http://ftp.debian.org/debian/dists/bookworm/main/installer-amd64/' \
+  --location 'http://ftp.debian.org/debian/dists/Debian11.11/main/installer-amd64/' \
   --extra-args 'console=ttyS0,115200n8 serial'
 ```
 
-### Step 9: Verify VM Functionality
+### Step 11: Verify VM Functionality
 
 1. **List Virtual Machines**:
    ```bash
@@ -208,7 +219,7 @@ virt-install \
    ```
 
 2. **Monitor VM**:
-   - Use Virt-Manager or `virsh` commands to manage and monitor your virtual machines.
+   - Use `virt-manager` or `virsh` commands to manage and monitor your virtual machines.
 
 ---
 
