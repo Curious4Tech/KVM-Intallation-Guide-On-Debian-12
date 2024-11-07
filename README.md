@@ -13,27 +13,18 @@ This guide provides a detailed, step-by-step process to install and configure KV
 
 ## Installation Steps
 
-### Step 0 : Optional (if you are using HyperV)
-
-Steps to Enable Nested Virtualization
-   1. **Shut down the VM**: Make sure the VM you want to enable nested virtualization on is powered off.
-   2. **Run the PowerShell command**: On the Hyper-V host, run the following command to expose virtualization extensions for the VM:
- ```
-Set-VMProcessor -VMName "YourVMName" -ExposeVirtualizationExtensions $true
-```
-Replace `YourVMName` with the name of your VM.
-
-3. **Start the VM**: Power on the VM.
-
 ### Step 1: Verify Virtualization Support
 
 1. **Enable Virtualization in BIOS**:
    - Restart your computer, enter BIOS/UEFI settings, and enable virtualization.
-   - nested virtualization for hyperv
-Nested virtualization is a feature that allows you to run Hyper-V inside a Hyper-V virtual machine (VM). This can be useful for testing configurations, running emulators, or creating isolated environments1. Here's how you can enable nested virtualization for Hyper-V:
-
-
-
+   - Steps to Enable Nested Virtualization (Optional, only for those who are using Hyper-V)
+        **Shut down the VM**: Make sure the VM you want to enable nested virtualization on is powered off.
+       **Run the PowerShell command**: On the Hyper-V host, run the following command to expose virtualization extensions for the VM:
+     ```
+       Set-VMProcessor -VMName "YourVMName" -ExposeVirtualizationExtensions $true
+     ```
+         Replace `YourVMName` with the name of your VM.
+        **Start the VM**: Power on the VM.
 
 2. **Check Virtualization in Debian**:
    ```bash
