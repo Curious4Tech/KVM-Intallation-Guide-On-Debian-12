@@ -21,6 +21,7 @@ This guide provides a detailed, step-by-step process to install and configure KV
      
         1. **Shut down the VM**: Make sure the VM you want to enable nested virtualization on is powered off.
         2. **Run the PowerShell command**: On the Hyper-V host, run the following command to expose virtualization extensions for the VM:
+ 
         `
        Set-VMProcessor -VMName "YourVMName" -ExposeVirtualizationExtensions $true
         `
