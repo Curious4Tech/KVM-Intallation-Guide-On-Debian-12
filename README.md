@@ -137,9 +137,9 @@ This step allows your user to manage VMs without root privileges.
 
 Add your user to the libvirt and kvm groups:
 
-   ```
+```
     sudo usermod -aG libvirt,kvm $USER
-    ```
+```
  Log out and log back in for the group changes to take effect.
 
 ### Step 9: (Optional) Configure Networking for Virtual Machines
@@ -147,18 +147,23 @@ Add your user to the libvirt and kvm groups:
 If you want your VMs to have network access, configure network bridging.
 
 Check if the default network is active:
+
 ```
 sudo virsh net-list --all
 ```
-    If default shows as inactive, start it:
+If default shows as inactive, start it:
 
-    sudo virsh net-start default
+```
+sudo virsh net-start default
+```
 
 Ensure it starts on boot:
 
-    sudo virsh net-autostart default
+```
+ sudo virsh net-autostart default
+```
 
-Step 7: Launch Virt-Manager
+### Step 10: Launch Virt-Manager
 
 To create and manage VMs using a graphical interface, launch Virt-Manager:
 
