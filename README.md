@@ -32,9 +32,12 @@ This guide provides a detailed, step-by-step process to install and configure KV
 
 2. **Check Virtualization in Debian**:
    ```bash
-   lscpu | grep Virtualization
+   egrep -c '(vmx|svm)' /proc/cpuinfo
    ```
-   - This should output information indicating virtualization support (e.g., `VT-x` for Intel or `AMD-V`).
+
+   ![image](https://github.com/user-attachments/assets/105f76f7-cc36-4905-82fa-c94d8bb1c440)
+
+   - If the output is `1` or more, your CPU supports hardware virtualization..
 
 ### Step 2: Update System Packages
 
@@ -54,6 +57,7 @@ This guide provides a detailed, step-by-step process to install and configure KV
 ### Step 3: Install KVM and Required Tools
 
 Run the following command to install KVM, QEMU, libvirt, and Virt-Manager:
+
 ```bash
 apt install qemu-kvm libvirt-daemon-system libvirt-clients virtinst virt-manager -y
 ```
@@ -61,6 +65,7 @@ apt install qemu-kvm libvirt-daemon-system libvirt-clients virtinst virt-manager
 ### Step 4: Start and Enable the Libvirt Daemon
 
 1. **Enable and Start Libvirt**:
+
    ```bash
    systemctl enable --now libvirtd
    ```
@@ -69,6 +74,9 @@ apt install qemu-kvm libvirt-daemon-system libvirt-clients virtinst virt-manager
    ```bash
    systemctl status libvirtd
    ```
+   
+![image](https://github.com/user-attachments/assets/ca077942-d00f-4590-8908-4ab7b156c605)
+
 
 ### Step 5: Verify KVM Installation
 
@@ -77,6 +85,10 @@ apt install qemu-kvm libvirt-daemon-system libvirt-clients virtinst virt-manager
    lsmod | grep kvm
    ```
    - You should see `kvm` and either `kvm_intel` or `kvm_amd`.
+
+
+   ![image](https://github.com/user-attachments/assets/0a676daf-c614-4d02-91bf-b7bb122fca34)
+
 
 2. **Validate with `virsh`**:
    ```bash
@@ -97,6 +109,9 @@ apt install qemu-kvm libvirt-daemon-system libvirt-clients virtinst virt-manager
    ```
    - This checks for warnings or errors related to KVM support.
 
+   ![image](https://github.com/user-attachments/assets/c3738280-a689-40f7-84ec-8962ddb6b950)
+
+
 ### Step 7: Optimize GRUB for IOMMU (Optional)
 
 1. **Edit GRUB Configuration**:
@@ -115,6 +130,42 @@ apt install qemu-kvm libvirt-daemon-system libvirt-clients virtinst virt-manager
    ```bash
    update-grub
    ```
+
+### Step 8: Add Your User to the libvirt and kvm Groups
+
+This step allows your user to manage VMs without root privileges.
+
+Add your user to the libvirt and kvm groups:
+
+   ```
+    sudo usermod -aG libvirt,kvm $USER
+    ```
+ Log out and log back in for the group changes to take effect.
+
+### Step 9: (Optional) Configure Networking for Virtual Machines
+
+If you want your VMs to have network access, configure network bridging.
+
+Check if the default network is active:
+```
+sudo virsh net-list --all
+```
+    If default shows as inactive, start it:
+
+    sudo virsh net-start default
+
+Ensure it starts on boot:
+
+    sudo virsh net-autostart default
+
+Step 7: Launch Virt-Manager
+
+To create and manage VMs using a graphical interface, launch Virt-Manager:
+
+virt-manager
+
+    In Virt-Manager, you can create new virtual machines, configure resources, and install operating systems.
+
 
 ### Step 8: Create a Virtual Machine
 
