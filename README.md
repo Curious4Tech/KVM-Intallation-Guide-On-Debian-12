@@ -26,7 +26,7 @@ This guide provides a detailed, step-by-step process to install and configure KV
        Set-VMProcessor -VMName "YourVMName" -ExposeVirtualizationExtensions $true
       ```
 
-         Replace `YourVMName` with the name of your VM.
+     Replace `YourVMName` with the name of your VM.
         3. **Start the VM**: Power on the VM.
 
 2. **Check Virtualization in Debian**:
