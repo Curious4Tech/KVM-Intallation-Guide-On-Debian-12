@@ -218,6 +218,10 @@ virt-install \
    virsh list --all
    ```
 
+   
+![image](https://github.com/user-attachments/assets/0d2e1578-7553-402d-b8fa-b0bae3843f59)
+
+
 2. **Monitor VM**:
    - Use `virt-manager` or `virsh` commands to manage and monitor your virtual machines.
 
