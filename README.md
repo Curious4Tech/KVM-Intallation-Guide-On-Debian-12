@@ -35,7 +35,7 @@ This guide provides a detailed, step-by-step process to install and configure KV
    egrep -c '(vmx|svm)' /proc/cpuinfo
    ```
 
-   ![image](https://github.com/user-attachments/assets/105f76f7-cc36-4905-82fa-c94d8bb1c440)
+![image](https://github.com/user-attachments/assets/105f76f7-cc36-4905-82fa-c94d8bb1c440)
 
    - If the output is `1` or more, your CPU supports hardware virtualization..
 
@@ -87,7 +87,7 @@ apt install qemu-kvm libvirt-daemon-system libvirt-clients virtinst virt-manager
    - You should see `kvm` and either `kvm_intel` or `kvm_amd`.
 
 
-   ![image](https://github.com/user-attachments/assets/0a676daf-c614-4d02-91bf-b7bb122fca34)
+![image](https://github.com/user-attachments/assets/0a676daf-c614-4d02-91bf-b7bb122fca34)
 
 
 2. **Validate with `virsh`**:
@@ -109,7 +109,7 @@ apt install qemu-kvm libvirt-daemon-system libvirt-clients virtinst virt-manager
    ```
    - This checks for warnings or errors related to KVM support.
 
-   ![image](https://github.com/user-attachments/assets/c3738280-a689-40f7-84ec-8962ddb6b950)
+![image](https://github.com/user-attachments/assets/c3738280-a689-40f7-84ec-8962ddb6b950)
 
 
 ### Step 7: Optimize GRUB for IOMMU (Optional)
